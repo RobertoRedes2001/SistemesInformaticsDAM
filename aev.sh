@@ -64,5 +64,27 @@ then
 fi
 
 if [ $opcion -eq 3 ];
-
+then
+	read -p "Introdueix un mes: " mes
+	read -p "Introdueix un dia: " dia
+	totalLineas=`cat usuarios.txt | wc -l`
+	cont=1
+	a=0
+	while [ $cont -le $totalLineas ];
+	do
+		meses=`cat usuarios.txt | head -$cont | tail -1 | awk '{print $3}'`
+		diass=`cat usuarios.txt | head -$cont | tail -1 | awk '{print $2}'`
+		usuarios=`cat usuarios.txt | head -$cont | tail -1 | awk '{print $1}'`
+		if [ $mes = $meses ]; then
+ 		if [ $dia = $diass ]; then
+		 echo $usuarios
+ 		fi
+		a=$((a+1))
+		fi
+		cont=$((cont+1))
+	done
+	if [ $a = 0 ]; then
+	echo "Nadie se ha conectado en esa fecha."
+	fi
+fi
 done
