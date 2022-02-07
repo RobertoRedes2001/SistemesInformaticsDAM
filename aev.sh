@@ -24,7 +24,7 @@ then
 	coincidencias=0
 	while [ $contador -le $totalLin ];
 	do
-		usuarioLin = `cat usuarios.txt | head -$contador | tail -1 | awk '{print $1}'`
+		usuarioLin=`cat usuarios.txt | head -$contador | tail -1 | awk '{print $1}'`
 		if [ $user = $usuarioLin ];
 		then
 		coincidencias=$((coincidencias+1))
