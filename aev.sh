@@ -80,6 +80,30 @@ then
 	echo "Nadie se ha conectado en esa fecha."
 	fi
 fi
+if [ $opcion -eq 4 ];
+then
+	read -p "Introduix el nom d'un usuari: " user
+	totalLin=`cat usuarios.txt | wc -l`
+	contador=1
+	coincidencias=0
+	while [ $contador -le $totalLin ];
+	do
+		usuarioLin=`cat usuarios.txt | head -$contador | tail -n1 | awk '{print $1}'`
+		
+		if [ $user = $usuarioLin ];
+		then
+		coincidencias=$((coincidencias+1))
+		result=`cat usuarios.txt | head -$contador | tail -n1 | awk '{print $1,$2,$3}'`
+		fi
+	contador=$((contador+1))
+	done
+	if [ $coincidencias -eq 0 ];
+	then
+	echo "$user no s'ha logejat"
+	else
+	echo "$result"
+	fi
+fi
 sleep 3s
 clear
 done
