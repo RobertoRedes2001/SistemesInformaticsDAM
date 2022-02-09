@@ -80,4 +80,6 @@ then
 	echo "Nadie se ha conectado en esa fecha."
 	fi
 fi
+sleep 3s
+clear
 done
