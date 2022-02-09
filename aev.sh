@@ -41,26 +41,19 @@ fi
 
 if [ $opcion -eq 2 ];
 then
-	read -p "Introduix el nombre d'un mes: " mes
-	totalLin=`cat usuarios.txt | wc -l`
-	cont=1
-	coinMes=0
-	echo "Llistat de dias de conexio aquest mes: "
-	while [ $cont -le $totalLin ];
-	do
-		mesLin=`cat usuarios.txt | head -$cont | tail -1 | awk '{print $3}'`
-		dia=`cat usuarios.txt | head -$cont | tail -1 | awk '{print $2}'`
-		if [ $mes = $mesLin ];
-		then
-		echo $dia
-		coinMes=$((coinMes+1))
-		fi
-	cont=$((cont+1))
-	done
-	if [ $coinMes -eq 0 ];
-	then
-	echo "No han hagut conexions aquest mes"
-	fi
+    read -p "Introdueix un mes: " mes
+    totalLineas=`cat usuarios.txt | wc -l`
+    cont=1
+    while [ $cont -le $totalLineas ]
+    do
+        diaMes=`cat usuarios.txt | head -n$cont | tail -n1 | awk '{print $2}'`
+        mes=`cat usuarios.txt | head -n$cont | tail -1 | awk '{print $3}'`
+            if [ $mes = $miMes ] 
+            then
+                echo "$diaMes"
+            fi
+        cont=$((cont+1))
+    done
 fi
 
 if [ $opcion -eq 3 ];
