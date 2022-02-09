@@ -24,7 +24,7 @@ then
 	coincidencias=0
 	while [ $contador -le $totalLin ];
 	do
-		usuarioLin=`cat usuarios.txt | head -$contador | tail -1 | awk '{print $1}'`
+		usuarioLin=`cat usuarios.txt | head -$contador | tail -n1 | awk '{print $1}'`
 		if [ $user = $usuarioLin ];
 		then
 		coincidencias=$((coincidencias+1))
@@ -41,7 +41,7 @@ fi
 
 if [ $opcion -eq 2 ];
 then
-    read -p "Introdueix un mes: " mes
+    read -p "Introdueix un mes: " miMes
     totalLineas=`cat usuarios.txt | wc -l`
     cont=1
     while [ $cont -le $totalLineas ]
@@ -65,9 +65,9 @@ then
 	a=0
 	while [ $cont -le $totalLineas ];
 	do
-		meses=`cat usuarios.txt | head -$cont | tail -1 | awk '{print $3}'`
-		diass=`cat usuarios.txt | head -$cont | tail -1 | awk '{print $2}'`
-		usuarios=`cat usuarios.txt | head -$cont | tail -1 | awk '{print $1}'`
+		meses=`cat usuarios.txt | head -$cont | tail -n1 | awk '{print $3}'`
+		diass=`cat usuarios.txt | head -$cont | tail -n1 | awk '{print $2}'`
+		usuarios=`cat usuarios.txt | head -$cont | tail -n1 | awk '{print $1}'`
 		if [ $mes = $meses ]; then
  		if [ $dia = $diass ]; then
 		 echo $usuarios
